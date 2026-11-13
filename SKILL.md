@@ -79,6 +79,7 @@ Read these files as needed:
 - `references/live-photo-production.md` when the user asks for Live Photo / 实况照片 / 三连实况拼图, supplies video assets for a social card, or wants Xiaohongshu / WeChat motion-card delivery. It covers information budget, single vs triple Live Photo, long-video intake, and platform publishing reminders.
 - `references/image-overlay.md` whenever text sits on top of a photo: photo qualification, localized tint fallback, and face / subject avoidance via multimodal subject mapping.
 - `references/screenshot-treatment.md` when the user supplies an app / web / code / dashboard screenshot — picks `.frame-shot` over `.frame-img`, sets corners/shadow/bg/inset, decides on `.device-browser` or `.device-phone` chrome.
+- `references/co-brand-header.md` whenever a supplied logo is paired with a creator credit, partner name, sponsor, or recurring header lockup — normalize visible bounds first, then apply optical alignment and multi-page consistency checks.
 - `references/map-component.md` when the content has spatial relationships (travel route, store locations, walking tour) — real routes default to Mapbox Static or OSM static tiles; schematic SVG is only for conceptual / illustrative maps. Pins are HTML overlays; never use live JS maps.
 - `references/title-shortener.md` when the task is a WeChat 21:9+1:1 cover pair, or any cross-platform reuse — derives the 1:1 short title from the long one (5-step extraction, 4 patterns, anti-patterns, sizing on `.poster.square`).
 - `references/category-cookbook.md` to route a user-named Rednote category (旅行 / 职场 / 游戏 / 影视 / 彩妆 / 美食 / 穿搭 / 家居 / 健身 / 情感 / 推荐) to applicable recipes and to confirm scope.
@@ -207,6 +208,7 @@ Default implementation pattern:
 
 - Create a task folder under `local-tests/<slug>/` by default, or inside the user-requested output folder. Never put generated task folders, rendered images, MOV files, `.pvt` packages, or downloaded sources in the skill root next to `SKILL.md`.
 - Put source images in `assets/`.
+- For recurring branded or co-branded headers, preserve the original logo, create a tightly cropped derivative when the source canvas has accidental padding, and reuse one lockup component across the full set. Inspect a 100% header crop before full-deck rendering; see `references/co-brand-header.md`.
 - Start from the seed template copied in Step 4.5, not a blank file. Prefer changing only the `<!-- POSTERS_HERE -->` region page-to-page. If a task needs custom layout CSS, add one clearly named task-scoped block in the copied file and keep semantic defaults reset (`figure { margin:0; }`, no browser-default spacing surprises).
 - Install dependencies once in the skill root: `npm install` (Playwright for rendering and validation, subset-font for font embedding).
 - Render with `node <SKILL_ROOT>/scripts/render.mjs <task-dir>`. It embeds the fonts the page actually uses (offline, repeatable), waits for the frozen background and icons, writes `output/<poster-id>.png` plus the pair preview, and fails if an image is not its board size. User-registered local fonts (`node <SKILL_ROOT>/scripts/gz-fonts.mjs add …`) are embedded too and never leave the machine.
@@ -330,6 +332,8 @@ Final response (after the user has reviewed or asked for auto-check) should incl
 - Do not deliver Editorial posters with a flat paper background, mono labels on every row, and no atmosphere layer. Run the Editorial Identity Test in `references/style-system.md` — a serif title alone does not make a poster Editorial.
 - Do not fake data, release details, or percentages.
 - Do not crop faces, key UI text, or hardware/product details unless the user explicitly accepts it.
+- Do not align a logo or co-brand credit by the raw image rectangle when the asset contains visible white or transparent padding. Normalize the visible bounds first; repeated page-specific nudges are a failed asset-prep workflow.
+- Do not force a screenshot into a tall or wide stage that creates a large internal blank band. Choose a closer ratio or change the page structure; screenshot background colour is not evidence and does not satisfy portrait density by itself.
 - Do not turn a video card into a fake still sequence without saying so. If a source is shorter than the target duration, ask for a longer source, use a shorter platform-safe duration, or explicitly document any hold/slowdown.
 - Do not skip the first-frame preview for Live Photo. Video is an image well with motion; its first frame must satisfy the static 3:4 layout and crop rules before rendering the MOV.
 - Do not let result videos scroll through section boundaries in a shallow crop; this creates the "overlapping video" failure. Inspect contact sheets and choose a stable time window before packaging.

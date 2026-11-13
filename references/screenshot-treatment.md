@@ -52,6 +52,18 @@ Pick six values before writing the markup. Treat this like the M16 cover decisio
 | `r-3x4`    | Mobile portrait shot (pair with `.device-phone`)          |
 | `r-21x9`   | Multi-monitor / ultra-wide / WeChat hero                  |
 
+### Ratio-fit gate
+
+Before choosing the slot, compare the screenshot's source ratio with the proposed `.frame-shot` ratio. `object-fit: contain` protects the UI from cropping, but it can also expose a bad layout decision by leaving a large empty stage around the screenshot.
+
+- If the contained screenshot leaves an internal blank band larger than roughly 15% of the frame height or width, choose a closer ratio or redesign the page.
+- Do not stretch a square screenshot well to match the height of a long side column. Use a full-width evidence well, align the screenshot well without stretching, or move the explanation below it.
+- A warm paper stage is a framing device, not content. Large areas of stage colour do not count as evidence or portrait fill.
+- In CSS grid/flex layouts, give screenshot items `min-width: 0; width: 100%`; otherwise the source image's intrinsic width can escape its column and cover adjacent text.
+- If the screenshot is the proof, enlarge the proof before adding more copy. Preserve key UI labels at mobile viewing size.
+
+Render the page, then inspect both the whole poster and a screenshot-only crop. A frame can pass DOM overflow checks while still failing visually because the actual UI occupies only a small island inside a large stage.
+
 ### 2. `corners-*` (style-locked default)
 
 - **Swiss** default: `corners-sq`. Use `corners-sm` only if the slot has surrounding shadow or chrome.

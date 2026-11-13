@@ -54,6 +54,22 @@ If screenshot content matters:
 - Put only one key sentence above it.
 - Use a bottom caption band instead of a side paragraph.
 - Crop carefully; preserve readable UI labels.
+- Count the visible screenshot, not the coloured stage around it. If `contain` creates a large internal blank band, select a closer frame ratio or change the page structure.
+- Do not use a growing flex wrapper as an invisible spacer between evidence and the bottom strip. If a region grows, the evidence well or a real text module must grow with it.
+
+## Commercial / Product Explainer Pages
+
+Commercial cards need enough explanation to be useful without becoming brochure pages. A normal content page should carry:
+
+- one small section label or kicker;
+- one clear page title;
+- one short lead or explanatory sentence;
+- one evidence layer: official screenshot, source graphic, comparison, or disclosed customer case;
+- one bottom takeaway, metric strip, or action rule.
+
+Prefer official product screenshots and source-supplied graphics over generic generated illustrations. Illustration can explain an abstract mechanism, but an illustration-only commercial set feels unproven. Use one core idea per page, and remove nuance that belongs in the article body.
+
+Keep the same recurring header and footer geometry across the set. Consistency does not mean repeating the same middle layout: vary full-width evidence, split explanation, ledger, comparison, and closing matrix while preserving identity.
 
 ## Page Rhythm
 

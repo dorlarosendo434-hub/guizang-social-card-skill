@@ -49,6 +49,30 @@ Use varied roles instead of repeating the same card page:
 - Gear list or buying guide.
 - Summary page with "remember these three".
 
+## Commercial Product Explainer Sequence
+
+For a sponsored product, team tool, or business-software carousel, build an argument rather than a feature dump. A strong 6-9 page sequence usually moves through:
+
+1. The cost, workflow, or management problem.
+2. The new mechanism or commercial model.
+3. How the user controls or manages it.
+4. Proof in the product UI or source material.
+5. What real work it can complete.
+6. How it enters the existing workflow.
+7. Trust, security, and factual boundaries.
+8. Who should try it and how to start small.
+
+Merge steps when the source is thin. Do not create one page per feature merely to increase page count.
+
+Evidence priority:
+
+1. Official product screenshot or user-supplied source graphic.
+2. Disclosed comparison, dashboard, or real case from the brief.
+3. A diagram that explains a mechanism not visible in the UI.
+4. Generated illustration only when no real evidence can carry the point.
+
+Each content page should answer one question in a glance, then provide a short explanatory sentence and one supporting visual or structured proof. Keep disclaimers close to unstable price, promotion, security, or performance claims rather than hiding them in the final caption.
+
 ## Copy Rules
 
 - Titles should be plain and sharp.

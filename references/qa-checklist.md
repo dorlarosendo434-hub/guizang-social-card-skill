@@ -27,6 +27,8 @@ Run this before final delivery.
 - Lower empty space is either intentional or fixed.
 - Images and screenshots align to the grid.
 - Screenshot pages give the screenshot enough area.
+- Screenshot pages do not count a large empty stage as evidence. If the visible UI occupies a small island inside the frame, choose a closer ratio or redesign the layout.
+- Commercial/product content pages normally include a section label, clear title, short explanation, evidence, and a takeaway; deliberate quote/statement pages are the exception.
 - 1:1 WeChat cover uses a simplified short title and is composed separately, not blindly cropped.
 - If a page overflows, measure the overflow before editing. Do not remove content until the measured overflow requires it.
 - Titles need visible breathing room before the next content block. Main display titles should usually keep at least 28px below; local headings should keep at least 16px.
@@ -72,6 +74,16 @@ If failing: don't shrink the canvas, don't add decorative blobs. Either expand c
 
 Use these numbers as the first diagnosis. Multimodal inspection is still useful for taste, but overflow, empty lower bands, and title gaps should be handled from measured output first.
 
+## Brand / Co-brand Header
+
+When a supplied logo is paired with partner or creator text, read `co-brand-header.md` and inspect a dedicated header crop at 100%.
+
+- The logo derivative is cropped to visible content; accidental white or transparent padding is not driving layout.
+- Logo wordmark and partner text share a convincing visual centre/baseline, compatible sans-serif character, colour, and weight.
+- The separator and gap feel intentional; the partner text does not look pasted on or highlighted without a brand reason.
+- Header height, divider, right-side metadata, and footer geometry remain identical across pages.
+- The contact sheet confirms the lockup does not jump, wrap, or change scale from page to page.
+
 ## Style
 
 - Package uses one visual system.
@@ -88,6 +100,8 @@ Use these numbers as the first diagnosis. Multimodal inspection is still useful 
 - Supplied images are not distorted.
 - Faces, hardware, product UI, and key text are not accidentally cropped.
 - Screenshots remain readable.
+- Screenshot wells use `min-width: 0` / bounded width inside grids so intrinsic image size cannot cover adjacent copy.
+- `object-fit: contain` has not created an excessive internal blank band; if it has, the slot ratio or page structure was changed instead of filling space with stage colour.
 - Generated images do not contain unwanted text, logos, page numbers, or poster borders.
 - Photo crops feel intentional.
 - For any image fetched from the web (Pexels / Unsplash / Flickr CC / Wallhaven / direct search): the source URL is recorded in `assets/SOURCES.md`, and the user has been asked whether to add an in-image attribution caption. The user's answer is honored. Flickr CC attribution preserves the author name when the user opts in.
