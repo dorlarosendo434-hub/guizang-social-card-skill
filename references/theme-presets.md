@@ -70,19 +70,19 @@ These five maintained palettes belong to the public Bibi fork and intentionally 
 
 Use the accent for key numbers, decisive conclusions, and structural marks. Explanatory labels such as “适合谁 / 推荐场景 / 重点客群” stay in `--ink` by default. All Bibi themes use Editorial typography; the co-brand header uses a bold sans-serif lockup as defined in `bibi-wechat-inline.md`.
 
-For the three multi-tone themes, `--accent` is the primary emphasis, `--accent-2` supports evidence or comparison, and `--accent-3` closes the page with an action or small structural marker. Use only the tones that serve the content; do not rainbow-code ordinary paragraphs.
+For all five themes, `--accent` is the primary emphasis, `--accent-2` supports evidence or comparison, and `--accent-3` closes the page with an action or small structural marker. Use only the tones that serve the content; do not rainbow-code ordinary paragraphs.
 
 ```css
 [data-theme="bibi-ochre-red"], [data-theme="ochre-red"] {
   --paper:#f5e9df; --paper-2:#e9d2c4; --ink:#3a211c; --muted:#80635a;
-  --accent:#a44834; --accent-soft:#d9b4a5; --accent-on:#f5e9df;
+  --accent:#a44834; --accent-2:#d9b4a5; --accent-3:#7f3f32; --accent-soft:#d9b4a5; --accent-on:#f5e9df;
   --accent-ink:#94402f; --accent-display:#a44834; --accent-ink-inverse:#e79985;
   --text-primary:#3a211c; --text-body:#4f3731; --text-secondary:#654d46; --text-helper:#80635a;
   --line-strong:#99827a; --line:#c5b4ac; --line-subtle:#ddd0c9;
 }
 [data-theme="bibi-graphite-green"], [data-theme="graphite-green"] {
   --paper:#f5f1e8; --paper-2:#e8dfcf; --ink:#16251b; --muted:#5d665d;
-  --accent:#2e6b4f; --accent-soft:#d4dfd2; --accent-on:#f5f1e8;
+  --accent:#2e6b4f; --accent-2:#a9b7a7; --accent-3:#1f513a; --accent-soft:#d4dfd2; --accent-on:#f5f1e8;
   --accent-ink:#2e6b4f; --accent-display:#2e6b4f; --accent-ink-inverse:#88c6a6;
   --text-primary:#16251b; --text-body:#39473c; --text-secondary:#4d5a50; --text-helper:#5d665d;
   --line-strong:#899286; --line:#bcc1b8; --line-subtle:#d7d7ce;

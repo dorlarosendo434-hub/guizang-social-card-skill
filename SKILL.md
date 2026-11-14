@@ -165,7 +165,7 @@ Do not mix the two visual systems inside the same image set unless the user expl
 Then pick one theme:
 
 - Editorial Magazine x E-ink uses one of 6 magazine palettes: Ink Classic, Indigo Porcelain, Forest Ink, Kraft Paper, Dune, or Midnight Ink (the only dark variant; reserved for game key art / night photography / cinematic covers).
-- Bibi WeChat inline cards add five maintained Editorial palettes: `bibi-ochre-red`, `bibi-graphite-green`, `bibi-sage-moss`, `bibi-pear-gold`, and `bibi-terracotta-ochre`. These are personal fork presets, not improvised brand hex values. Multi-tone presets expose `--accent`, `--accent-2`, and `--accent-3`; map them to content hierarchy instead of distributing all colors evenly.
+- Bibi WeChat inline cards add five maintained Editorial palettes: `bibi-ochre-red`, `bibi-graphite-green`, `bibi-sage-moss`, `bibi-pear-gold`, and `bibi-terracotta-ochre`. These are personal fork presets, not improvised brand hex values. All five expose `--accent`, `--accent-2`, and `--accent-3`; map them to content hierarchy instead of distributing all colors evenly.
 - Swiss International uses one of 4 accent palettes: IKB Blue, Lemon Yellow, Lemon Green, or Safety Orange.
 
 Read `references/theme-presets.md` for exact CSS tokens. Do not invent arbitrary colors unless the user has a strict brand requirement.

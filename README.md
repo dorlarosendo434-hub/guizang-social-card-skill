@@ -259,6 +259,33 @@ node validate-social-deck.mjs path/to/task-dir
 | 🌾 **淡梨米金 Bibi Pear Gold** | `#3b3426` / `#fbf6e3` / `#c4a760` | 入门指南、轻教程、清单、效率建议 |
 | 🧱 **陶土暖赭 Bibi Terracotta Ochre** | `#442b25` / `#f4e9e1` / `#a96050` | 商单、品牌故事、产品价值、案例复盘 |
 
+#### 五套主题样卡
+
+以下样卡均为公众号正文贴图规格 `1080 × 1440 / 3:4`。标题与说明性标签保持深墨色；`--accent` 用于核心判断，`--accent-2` 承接证据或对照，`--accent-3` 只用于行动建议、页码和小面积收束。实际文章不要求同时出现三种强调色，应按内容层级取用。
+
+<table>
+  <tr>
+    <td width="42%"><a href="./assets/bibi-theme-samples/wechat-inline-ochre-red.png"><img src="./assets/bibi-theme-samples/wechat-inline-ochre-red.png" alt="赭红纸墨 3:4 公众号贴图样卡"></a></td>
+    <td><strong>赭红纸墨 · Bibi Ochre Red</strong><br><br>适合商单、预算、成本、采购判断和产品价值。主赭红负责明确判断，浅陶粉承接方案与截图，深赭红用于决策和下一步；整体有商业力度，但不做高饱和促销感。</td>
+  </tr>
+  <tr>
+    <td><a href="./assets/bibi-theme-samples/wechat-inline-graphite-green.png"><img src="./assets/bibi-theme-samples/wechat-inline-graphite-green.png" alt="石墨绿 3:4 公众号贴图样卡"></a></td>
+    <td><strong>石墨绿 · Bibi Graphite Green</strong><br><br>适合 AI 工具、工作流、教程和方法论。石墨绿突出框架与步骤，雾灰绿放实操证据，深石墨绿收束结论；理性、清楚，但不会显得冰冷或像企业后台。</td>
+  </tr>
+  <tr>
+    <td><a href="./assets/bibi-theme-samples/wechat-inline-sage-moss.png"><img src="./assets/bibi-theme-samples/wechat-inline-sage-moss.png" alt="鼠尾草苔绿 3:4 公众号贴图样卡"></a></td>
+    <td><strong>鼠尾草苔绿 · Bibi Sage Moss</strong><br><br>适合成长、健康、长期主义和自然感工作流。鼠尾草绿给主观点，灰豆绿托住证据，柔和苔绿落在行动；温和、有呼吸感，但信息结构不能松散。</td>
+  </tr>
+  <tr>
+    <td><a href="./assets/bibi-theme-samples/wechat-inline-pear-gold.png"><img src="./assets/bibi-theme-samples/wechat-inline-pear-gold.png" alt="淡梨米金 3:4 公众号贴图样卡"></a></td>
+    <td><strong>淡梨米金 · Bibi Pear Gold</strong><br><br>适合入门指南、轻教程、清单和效率建议。淡梨黄降低理解门槛，浅卡其承接说明，柔和米金强调完成状态；整体明亮友好，但避免糖果色和幼态装饰。</td>
+  </tr>
+  <tr>
+    <td><a href="./assets/bibi-theme-samples/wechat-inline-terracotta-ochre.png"><img src="./assets/bibi-theme-samples/wechat-inline-terracotta-ochre.png" alt="陶土暖赭 3:4 公众号贴图样卡"></a></td>
+    <td><strong>陶土暖赭 · Bibi Terracotta Ochre</strong><br><br>适合品牌故事、产品价值、案例复盘和观点内容。陶土红负责主张，褪色砖红放对比与过程，暖赭色给策略和行动；有温度、有力度，但不做叫卖式红色。</td>
+  </tr>
+</table>
+
 ### Swiss 4 套
 
 | 主题 | 锚点色 | 适合场景 |
@@ -297,6 +324,7 @@ guizang-social-card-skill/
 │   ├── template-editorial-card.html      ← Editorial 种子(6 通用 + 5 笔笔主题 / 3 画板)
 │   ├── template-swiss-card.html          ← Swiss 种子(4 accent / 3 画板)
 │   ├── magazine-bg-webgl.js              ← WebGL 墨流背景
+│   ├── bibi-theme-samples/               ← 笔笔 5 套专属主题 3:4 样卡
 │   └── screenshot-backgrounds/           ← 9 张截图舞台底(WebP)
 │       ├── style-a/                      ←   Editorial 5 套
 │       └── style-b/                      ←   Swiss 4 套
