@@ -56,6 +56,18 @@ Content page structure:
 - If a page has a screenshot, reduce the text and give the screenshot enough area.
 - If lower space is empty across pages, combine pages or add a functional element such as checklist, comparison row, quote, or image evidence.
 
+## WeChat Official Account Inline Cards / 公众号正文贴图
+
+This is a static body-card mode, not the `21:9 + 1:1` cover pair and not automatically a Live Photo task.
+
+- Canvas: `1080 x 1440`, ratio `3:4`.
+- Export: PNG.
+- Typical set: 1 cover + 4-8 content pages; use up to 9 only when the source genuinely needs it.
+- Safe area: 72-96px on the sides, 72-112px at the top, and 80-120px at the bottom.
+- Naming: `output/wechat-inline-01-cover.png`, then `output/wechat-inline-02-<topic>.png`.
+- Bibi-branded requests must also read `bibi-wechat-inline.md` for the recurring header/footer, density rules, and personal palettes.
+- Do not silently route this request to the cover-pair workflow just because the target platform is WeChat.
+
 ## WeChat Official Account Cover Pair
 
 Generate a pair: one `21:9` main cover and one `1:1` square cover. Build both in the same HTML file, and include a combined preview section that places them together for visual checking.

@@ -1,7 +1,7 @@
-# Guizang Social Card Skill · 小红书图文 / 公众号封面对
+# Guizang Social Card Skill · 笔笔专属公开派生版
 
-![GitHub stars](https://img.shields.io/github/stars/op7418/guizang-social-card-skill?style=flat-square)
-![License](https://img.shields.io/github/license/op7418/guizang-social-card-skill?style=flat-square)
+![GitHub stars](https://img.shields.io/github/stars/dorlarosendo434-hub/guizang-social-card-skill?style=flat-square)
+![License](https://img.shields.io/github/license/dorlarosendo434-hub/guizang-social-card-skill?style=flat-square)
 ![Skill](https://img.shields.io/badge/Skill-Agent-111111?style=flat-square)
 ![Social Cards](https://img.shields.io/badge/Social-Cards-FF4D6D?style=flat-square)
 ![Live Photo](https://img.shields.io/badge/Live%20Photo-Motion%20Cards-002FA7?style=flat-square)
@@ -10,7 +10,9 @@
 
 [English README](./README.en.md)
 
-一个适配 Claude Code / Codex 等 Agent 环境的图文卡片技能,用于从文章、文案、截图、产品笔记、字幕、照片或用户视频生成**小红书 / Rednote 图文组图**、**Live Photo 动态卡**与**公众号 21:9 + 1:1 封面对**。
+> 这是笔笔维护的公开派生版，来源为 [op7418/guizang-social-card-skill](https://github.com/op7418/guizang-social-card-skill)。保留上游来源与 AGPL-3.0 许可证，并增加笔笔的公众号正文贴图模式、联名页头/页尾规范，以及赭红、石墨绿两套个人主题。
+
+一个适配 Claude Code / Codex 等 Agent 环境的图文卡片技能,用于从文章、文案、截图、产品笔记、字幕、照片或用户视频生成**小红书 / Rednote 图文组图**、**公众号 3:4 正文贴图**、**Live Photo 动态卡**与**公众号 21:9 + 1:1 封面对**。
 
 内置两套视觉系统,共用一份图文工作流:
 
@@ -24,13 +26,13 @@
 ## 30 秒开始
 
 ```bash
-npx skills add https://github.com/op7418/guizang-social-card-skill --skill guizang-social-card-skill
+npx skills add https://github.com/dorlarosendo434-hub/guizang-social-card-skill --skill guizang-social-card-skill
 ```
 
 也可以直接把这段话发给有 shell 权限的 AI Agent:
 
 ```text
-帮我安装 guizang-social-card-skill。请把 https://github.com/op7418/guizang-social-card-skill 克隆到 ~/.claude/skills/guizang-social-card-skill,安装完成后检查 SKILL.md、assets/、references/ 是否存在。
+帮我安装 guizang-social-card-skill。请把 https://github.com/dorlarosendo434-hub/guizang-social-card-skill 克隆到 ~/.claude/skills/guizang-social-card-skill,安装完成后检查 SKILL.md、assets/、references/ 是否存在。
 ```
 
 已经安装过的话,用这段话更新:
@@ -50,6 +52,7 @@ npx skills add https://github.com/op7418/guizang-social-card-skill --skill guiza
 ```text
 基于这份产品测评做一套小红书 3:4,标题用电子杂志风。
 帮我把这篇文章做成公众号封面对:21:9 头图 + 1:1 分享卡,视觉保持一致。
+按笔笔的公众号小绿书模式做 3:4 正文贴图，使用石墨绿主题和统一联名页头。
 我有 3 张露营照片,帮我做一套全图风格的小红书图文。
 把这段游戏攻略文案做成一套小红书图文,需要从 wallhaven 拿点游戏原画。
 我有一段咖啡视频,帮我做成小红书 5 秒 Live Photo 卡片,文字压在安静区域。
@@ -62,7 +65,8 @@ npx skills add https://github.com/op7418/guizang-social-card-skill --skill guiza
 - 📐 **3 个画板尺寸**:`.poster.xhs` 1080×1440(小红书 3:4)、`.poster.wide` 2100×900(公众号 21:9)、`.poster.square` 1080×1080(公众号 1:1)
 - 🎬 **Live Photo 动态卡**:支持单视频、二宫格、三宫格、四宫格、三连拼图、长视频低成本诊断;小红书按 `5s`,微信公众号文章内按 `3s`
 - 🧩 **28 个版式骨架**:Editorial 16 个(`M01-M16`,含 Image-Led Cover、Pipeline、Before/After 等)+ Swiss 12 个(`S01-S12`,含 KPI Tower、H-Bar Chart、Matrix + Hero 等)
-- 🎨 **10 套主题预设**:Editorial 6 套(墨水经典、靛蓝瓷、森林墨、牛皮纸、沙丘、**Midnight Ink** 暗色)+ Swiss 4 套锚点色(IKB Klein Blue、柠檬黄、柠檬绿、安全橙)
+- 🎨 **12 套主题预设**:Editorial 6 套 + 笔笔专属 2 套(赭红、石墨绿)+ Swiss 4 套锚点色
+- 📰 **笔笔公众号正文贴图**:`1080×1440 / 3:4`，固定联名页头与页尾，控制信息密度并优先使用真实产品证据
 - 🖼 **图源工作流**:用户图优先;无图时按 Unsplash → Pexels → Flickr CC → Wallhaven → 直接搜索的优先级取图,落本地 + 自动写 `SOURCES.md`
 - 🌫 **WebGL 墨流背景**:杂志风 hero 页可挂动态墨流;低性能或截图时可禁用
 - 🪧 **文字压图 + 主体避让**:满铺图先做 quiet-zone 与主体映射,文字避开人脸、产品和关键动作;需要时只加局部 tint,不默认全图遮罩
@@ -160,7 +164,7 @@ Live Photo 在这个 Skill 里的定位是"把用户提供的视频装进社交�
 ### 方式一:一行命令安装(推荐)
 
 ```bash
-npx skills add https://github.com/op7418/guizang-social-card-skill --skill guizang-social-card-skill
+npx skills add https://github.com/dorlarosendo434-hub/guizang-social-card-skill --skill guizang-social-card-skill
 ```
 
 ### 方式二:把下面这段话直接发给 AI
@@ -168,7 +172,7 @@ npx skills add https://github.com/op7418/guizang-social-card-skill --skill guiza
 > 帮我安装 `guizang-social-card-skill` 这个 Claude Code skill。请按下面步骤做:
 >
 > 1. 确保 `~/.claude/skills/` 目录存在(不存在就创建)
-> 2. 执行 `git clone https://github.com/op7418/guizang-social-card-skill.git ~/.claude/skills/guizang-social-card-skill`
+> 2. 执行 `git clone https://github.com/dorlarosendo434-hub/guizang-social-card-skill.git ~/.claude/skills/guizang-social-card-skill`
 > 3. 验证:`ls ~/.claude/skills/guizang-social-card-skill/` 应该看到 `SKILL.md`、`assets/`、`references/` 三项
 > 4. 告诉我装好了,之后我说"做一套小红书图文"之类的话就会触发这个 skill
 
@@ -177,7 +181,7 @@ npx skills add https://github.com/op7418/guizang-social-card-skill --skill guiza
 ### 方式三:手动命令行
 
 ```bash
-git clone https://github.com/op7418/guizang-social-card-skill.git ~/.claude/skills/guizang-social-card-skill
+git clone https://github.com/dorlarosendo434-hub/guizang-social-card-skill.git ~/.claude/skills/guizang-social-card-skill
 ```
 
 ### 触发方式
@@ -192,13 +196,14 @@ git clone https://github.com/op7418/guizang-social-card-skill.git ~/.claude/skil
 - "做一套瑞士风的小红书测评 / IKB 风格图文"
 - "把这段视频做成小红书 Live Photo / 三连实况拼图"
 - "做一个微信公众号文章内 3 秒 Live Photo"
+- "按笔笔的公众号贴图规范做一套 3:4 正文图，用赭红 / 石墨绿主题"
 
 ## 使用流程
 
 Skill 本身是结构化工作流,Agent 会按 7 步走:
 
 1. **Intake** — 抓 4 件事:目标平台 / 风格 / 内容素材 / 用户图。无图时一次性给 A/B/C 三选(自己拍图 / AI 生图 / 网络取图),不二次劝导
-2. **Style & Theme** — 选 Editorial 还是 Swiss,再从 10 套预设里选主题色。不允许随手写 hex,品牌色走受约束生成
+2. **Style & Theme** — 选 Editorial、Swiss 或笔笔公众号正文贴图模式,再从 12 套预设里选主题色。不允许随手写 hex,品牌色走受约束生成
 3. **Layout Selection** — 根据内容结构从 28 个版式骨架里挑、粘、改文案。Editorial 16 个 / Swiss 12 个
 4. **Asset Prep** — 取图(Unsplash / Pexels / Flickr CC / Wallhaven / 直接搜索),落本地 + 写 `SOURCES.md`;问用户要不要标来源
 5. **Compose & Render** — 拷种子模板 → 替换 `<!-- POSTERS_HERE -->` → `node scripts/render.mjs <任务目录>`
@@ -244,6 +249,13 @@ node validate-social-deck.mjs path/to/task-dir
 | 🌙 **沙丘 Dune** | `#1f1a14` / `#f0e6d2` | 艺术、设计、创意、时尚 |
 | ⚫ **午夜墨 Midnight Ink** | `#0e0d0c` / `#ece2cf` / `#d4a04a` | 游戏 key art / 夜景 / 影调封面 / 黑神话 · 艾尔登法环类深色题材 |
 
+### 笔笔专属 Editorial 2 套
+
+| 主题 | 色调 | 适合场景 |
+|------|------|---------|
+| 🧱 **赭红纸墨 Bibi Ochre Red** | `#3a211c` / `#f5e9df` / `#a44834` | 商单、产品价值、成本、采购判断、案例 |
+| 🌲 **石墨绿 Bibi Graphite Green** | `#16251b` / `#f5f1e8` / `#2e6b4f` | AI 工具、工作流、教程、方法论、理性分析 |
+
 ### Swiss 4 套
 
 | 主题 | 锚点色 | 适合场景 |
@@ -279,7 +291,7 @@ guizang-social-card-skill/
 ├── validate-social-deck.mjs              ← Playwright 版式校验脚本
 ├── scripts/                              ← Live Photo 打包 / 抽帧 / 文档测试脚本
 ├── assets/
-│   ├── template-editorial-card.html      ← Editorial 种子(6 主题 / 3 画板)
+│   ├── template-editorial-card.html      ← Editorial 种子(6 通用 + 2 笔笔主题 / 3 画板)
 │   ├── template-swiss-card.html          ← Swiss 种子(4 accent / 3 画板)
 │   ├── magazine-bg-webgl.js              ← WebGL 墨流背景
 │   └── screenshot-backgrounds/           ← 9 张截图舞台底(WebP)
@@ -288,7 +300,8 @@ guizang-social-card-skill/
 └── references/
     ├── platform-specs.md                 ← 平台 × 分辨率 × 命名
     ├── style-system.md                   ← 两种风格的硬规则与反模式
-    ├── theme-presets.md                  ← 10 套色票详解
+    ├── theme-presets.md                  ← 12 套色票详解
+    ├── bibi-wechat-inline.md             ← 笔笔公众号 3:4 正文贴图规范
     ├── layout-recipes.md                 ← 28 个版式骨架(M01-M16 + S01-S12)
     ├── components.md                     ← 字体 / 卡片 / 间距 / 图标
     ├── background-systems.md             ← 墨流 / 网格 / 纸纹层
@@ -340,7 +353,7 @@ guizang-social-card-skill/
 可以。一个 task 目录下的 `index.html` 包含多个 `.poster`,`node scripts/render.mjs` 会逐个截 PNG。一次出小红书 3-9 张组图很常见。
 
 **为什么不允许自定义颜色?**
-和 PPT skill 同样的理由——这个 Skill 的核心价值是稳定产出。自由选色会破坏整体风格,只允许从 10 套预设里挑。
+和 PPT skill 同样的理由——这个 Skill 的核心价值是稳定产出。自由选色会破坏整体风格,只允许从 12 套预设里挑；其中赭红和石墨绿是笔笔专属的维护主题。
 
 **能用其他模型生图吗?**
 可以。生图本身不在 Skill 范围内,但 SKILL.md Step 4 写清了取图协议:用户图 → AI 生图 → 网络取图。AI 生图能力依赖你当前 Agent 接的模型。

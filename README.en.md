@@ -1,7 +1,7 @@
-# Guizang Social Card Skill · Xiaohongshu Carousels / WeChat Cover Pairs
+# Guizang Social Card Skill · Bibi Public Fork
 
-![GitHub stars](https://img.shields.io/github/stars/op7418/guizang-social-card-skill?style=flat-square)
-![License](https://img.shields.io/github/license/op7418/guizang-social-card-skill?style=flat-square)
+![GitHub stars](https://img.shields.io/github/stars/dorlarosendo434-hub/guizang-social-card-skill?style=flat-square)
+![License](https://img.shields.io/github/license/dorlarosendo434-hub/guizang-social-card-skill?style=flat-square)
 ![Skill](https://img.shields.io/badge/Skill-Agent-111111?style=flat-square)
 ![Social Cards](https://img.shields.io/badge/Social-Cards-FF4D6D?style=flat-square)
 ![Live Photo](https://img.shields.io/badge/Live%20Photo-Motion%20Cards-002FA7?style=flat-square)
@@ -10,7 +10,9 @@
 
 [中文 README](./README.md)
 
-An agent skill for Claude Code, Codex, and similar coding-agent environments. It generates **Xiaohongshu / Rednote carousel images**, **Live Photo motion cards**, and **WeChat 21:9 + 1:1 cover pairs** from articles, copy, screenshots, product notes, subtitles, photos, or user-supplied videos.
+> This is Bibi's public fork of [op7418/guizang-social-card-skill](https://github.com/op7418/guizang-social-card-skill), preserving upstream attribution and the AGPL-3.0 license. It adds Bibi's 3:4 WeChat inline-card mode, recurring co-brand header/footer, and ochre-red plus graphite-green personal themes.
+
+An agent skill for Claude Code, Codex, and similar coding-agent environments. It generates **Xiaohongshu / Rednote carousel images**, **3:4 WeChat inline cards**, **Live Photo motion cards**, and **WeChat 21:9 + 1:1 cover pairs** from articles, copy, screenshots, product notes, subtitles, photos, or user-supplied videos.
 
 Two visual systems share one workflow:
 
@@ -24,13 +26,13 @@ Two visual systems share one workflow:
 ## 30-second start
 
 ```bash
-npx skills add https://github.com/op7418/guizang-social-card-skill --skill guizang-social-card-skill
+npx skills add https://github.com/dorlarosendo434-hub/guizang-social-card-skill --skill guizang-social-card-skill
 ```
 
 Or paste this to an AI agent with shell access:
 
 ```text
-Install guizang-social-card-skill for me. Clone https://github.com/op7418/guizang-social-card-skill into ~/.claude/skills/guizang-social-card-skill, then verify that SKILL.md, assets/, and references/ exist.
+Install guizang-social-card-skill for me. Clone https://github.com/dorlarosendo434-hub/guizang-social-card-skill into ~/.claude/skills/guizang-social-card-skill, then verify that SKILL.md, assets/, and references/ exist.
 ```
 
 If you already installed it, update with:
@@ -62,7 +64,7 @@ Turn these three game clips into a triple Live Photo collage with Swiss-style gu
 - 📐 **3 canvas sizes**: `.poster.xhs` 1080×1440 (Xiaohongshu 3:4), `.poster.wide` 2100×900 (WeChat 21:9), `.poster.square` 1080×1080 (WeChat 1:1)
 - 🎬 **Live Photo motion cards**: single video, two-grid, three-grid, four-grid, triple collage, and low-cost long-video diagnosis; `5s` for Xiaohongshu, `3s` for WeChat Official Account articles
 - 🧩 **28 layout skeletons**: 16 Editorial (`M01-M16`, including Image-Led Cover, Pipeline, Before/After) + 12 Swiss (`S01-S12`, including KPI Tower, H-Bar Chart, Matrix + Hero)
-- 🎨 **10 theme presets**: 6 Editorial (Ink Classic, Indigo Porcelain, Forest Ink, Kraft Paper, Dune, **Midnight Ink** dark) + 4 Swiss anchor colors (IKB Klein Blue, Lemon, Lemon Green, Safety Orange)
+- 🎨 **12 theme presets**: 6 core Editorial + 2 Bibi personal themes (Ochre Red, Graphite Green) + 4 Swiss anchor colors
 - 🖼 **Image sourcing workflow**: user images first; otherwise waterfall through Unsplash → Pexels → Flickr CC → Wallhaven → direct search, downloaded locally with auto-generated `SOURCES.md`
 - 🌫 **WebGL ink-flow background**: editorial hero pages can ship a live ink animation; can be disabled for low-power devices or screenshot mode
 - 🪧 **Text-on-image + subject safety**: full-bleed images require quiet-zone and subject mapping first; add only localized tint when needed, not a default full-canvas mask
@@ -160,7 +162,7 @@ Tiered by "circle of competence" — see [`references/category-cookbook.md`](./r
 ### Option 1: One-line install (recommended)
 
 ```bash
-npx skills add https://github.com/op7418/guizang-social-card-skill --skill guizang-social-card-skill
+npx skills add https://github.com/dorlarosendo434-hub/guizang-social-card-skill --skill guizang-social-card-skill
 ```
 
 ### Option 2: Paste this to an AI
@@ -168,7 +170,7 @@ npx skills add https://github.com/op7418/guizang-social-card-skill --skill guiza
 > Install the `guizang-social-card-skill` Claude Code skill for me. Steps:
 >
 > 1. Make sure `~/.claude/skills/` exists (create if not)
-> 2. Run `git clone https://github.com/op7418/guizang-social-card-skill.git ~/.claude/skills/guizang-social-card-skill`
+> 2. Run `git clone https://github.com/dorlarosendo434-hub/guizang-social-card-skill.git ~/.claude/skills/guizang-social-card-skill`
 > 3. Verify: `ls ~/.claude/skills/guizang-social-card-skill/` should show `SKILL.md`, `assets/`, `references/`
 > 4. Tell me when done. Later, saying things like "make me a Xiaohongshu carousel" will trigger this skill.
 
@@ -177,7 +179,7 @@ Paste the block above into Claude Code / Cursor / any AI agent with shell access
 ### Option 3: Manual CLI
 
 ```bash
-git clone https://github.com/op7418/guizang-social-card-skill.git ~/.claude/skills/guizang-social-card-skill
+git clone https://github.com/dorlarosendo434-hub/guizang-social-card-skill.git ~/.claude/skills/guizang-social-card-skill
 ```
 
 ### How to trigger it
@@ -198,7 +200,7 @@ Once installed, Claude Code auto-detects the skill. Trigger phrases:
 The skill is a structured workflow. The agent walks through 7 steps:
 
 1. **Intake** — capture 4 things: target platform / style / source content / user images. When no images are available, present A/B/C once (shoot your own / AI generate / source online); don't re-pitch
-2. **Style & Theme** — pick Editorial or Swiss, then pick one of 10 theme presets. No hand-written hex values; brand colors go through constrained generation
+2. **Style & Theme** — pick Editorial, Swiss, or the Bibi WeChat inline mode, then pick one of 12 theme presets. No hand-written hex values; brand colors go through constrained generation
 3. **Layout Selection** — pick / paste / adapt copy from the 28 layout skeletons. 16 Editorial / 12 Swiss
 4. **Asset Prep** — source images (Unsplash / Pexels / Flickr CC / Wallhaven / direct search), download locally + write `SOURCES.md`; ask whether to credit sources
 5. **Compose & Render** — copy seed template → replace `<!-- POSTERS_HERE -->` → `node scripts/render.mjs <task-dir>`
@@ -244,6 +246,13 @@ Pick from [`references/theme-presets.md`](./references/theme-presets.md). **Don'
 | 🌙 **Dune** | `#1f1a14` / `#f0e6d2` | Art, design, creative, fashion |
 | ⚫ **Midnight Ink** | `#0e0d0c` / `#ece2cf` / `#d4a04a` | Game key art / night scenes / cinematic covers / Black Myth · Elden Ring-style dark themes |
 
+### Bibi Editorial (2)
+
+| Theme | Tones | Best for |
+|-------|-------|----------|
+| 🧱 **Bibi Ochre Red** | `#3a211c` / `#f5e9df` / `#a44834` | Commercial briefs, product value, cost, purchasing decisions, cases |
+| 🌲 **Bibi Graphite Green** | `#16251b` / `#f5f1e8` / `#2e6b4f` | AI tools, workflows, tutorials, methods, analytical content |
+
 ### Swiss (4)
 
 | Theme | Anchor | Best for |
@@ -280,7 +289,7 @@ guizang-social-card-skill/
 ├── validate-social-deck.mjs              ← Playwright layout validator
 ├── scripts/                              ← Live Photo packaging / contact sheet / doc-test scripts
 ├── assets/
-│   ├── template-editorial-card.html      ← Editorial seed (6 themes / 3 canvases)
+│   ├── template-editorial-card.html      ← Editorial seed (6 core + 2 Bibi themes / 3 canvases)
 │   ├── template-swiss-card.html          ← Swiss seed (4 accents / 3 canvases)
 │   ├── magazine-bg-webgl.js              ← WebGL ink-flow background
 │   └── screenshot-backgrounds/           ← 9 screenshot stage backgrounds (WebP)
@@ -289,7 +298,8 @@ guizang-social-card-skill/
 └── references/
     ├── platform-specs.md                 ← Platform × resolution × naming
     ├── style-system.md                   ← Hard rules and anti-patterns for both styles
-    ├── theme-presets.md                  ← All 10 palettes in detail
+    ├── theme-presets.md                  ← All 12 palettes in detail
+    ├── bibi-wechat-inline.md             ← Bibi 3:4 WeChat inline-card rules
     ├── layout-recipes.md                 ← 28 layout skeletons (M01-M16 + S01-S12)
     ├── components.md                     ← Type / cards / spacing / icons
     ├── background-systems.md             ← Ink flow / grid / paper layers
@@ -341,7 +351,7 @@ guizang-social-card-skill/
 Yes. A task directory's `index.html` can hold multiple `.poster` sections; `node scripts/render.mjs` screenshots each one. A 3-9 card Xiaohongshu set is the common case.
 
 **Why are custom colors disallowed?**
-Same reason as the PPT skill — the skill's core value is stable output. Free color picking breaks visual cohesion. Pick from the 10 presets only.
+Same reason as the PPT skill — the skill's core value is stable output. Free color picking breaks visual cohesion. Pick from the 12 maintained presets only.
 
 **Can I use other models for image generation?**
 Yes. Image generation itself is out of scope. SKILL.md Step 4 spells out the sourcing protocol: user images → AI-generated → web sources. AI generation depends on whichever model your agent connects to.

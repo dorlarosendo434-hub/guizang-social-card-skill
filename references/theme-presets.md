@@ -56,6 +56,34 @@ Paste the printed `[data-theme="brand"]{…}` at the end of the page `<style>` a
 | 🟠 Safety Orange | `safety-orange` | `#fafaf8` | `#0a0a0a` | `#FF6B35` | `#c2410c` | `#ffffff` | 14.7 / 99 |
 <!-- GZ:THEMES:END -->
 
+## Bibi WeChat Inline Palettes (Fork Presets)
+
+These two maintained palettes belong to the public Bibi fork and intentionally live outside the generated upstream block above. They are inlined after `GZ:TOKENS:END` in `assets/template-editorial-card.html`.
+
+| Theme | data-theme | paper | ink | accent | Best for |
+|---|---|---:|---:|---:|---|
+| 赭红纸墨 Bibi Ochre Red | `bibi-ochre-red` / `ochre-red` | `#f5e9df` | `#3a211c` | `#a44834` | 商单、产品价值、成本、采购判断、案例 |
+| 石墨绿 Bibi Graphite Green | `bibi-graphite-green` / `graphite-green` | `#f5f1e8` | `#16251b` | `#2e6b4f` | AI 工具、工作流、教程、方法论、理性分析 |
+
+Use the accent for key numbers, decisive conclusions, and structural marks. Explanatory labels such as “适合谁 / 推荐场景 / 重点客群” stay in `--ink` by default. Both themes use Editorial typography; the co-brand header uses a bold sans-serif lockup as defined in `bibi-wechat-inline.md`.
+
+```css
+[data-theme="bibi-ochre-red"], [data-theme="ochre-red"] {
+  --paper:#f5e9df; --paper-2:#e9d2c4; --ink:#3a211c; --muted:#80635a;
+  --accent:#a44834; --accent-soft:#d9b4a5; --accent-on:#f5e9df;
+  --accent-ink:#94402f; --accent-display:#a44834; --accent-ink-inverse:#e79985;
+  --text-primary:#3a211c; --text-body:#4f3731; --text-secondary:#654d46; --text-helper:#80635a;
+  --line-strong:#99827a; --line:#c5b4ac; --line-subtle:#ddd0c9;
+}
+[data-theme="bibi-graphite-green"], [data-theme="graphite-green"] {
+  --paper:#f5f1e8; --paper-2:#e8dfcf; --ink:#16251b; --muted:#5d665d;
+  --accent:#2e6b4f; --accent-soft:#d4dfd2; --accent-on:#f5f1e8;
+  --accent-ink:#2e6b4f; --accent-display:#2e6b4f; --accent-ink-inverse:#88c6a6;
+  --text-primary:#16251b; --text-body:#39473c; --text-secondary:#4d5a50; --text-helper:#5d665d;
+  --line-strong:#899286; --line:#bcc1b8; --line-subtle:#d7d7ce;
+}
+```
+
 ## Editorial Magazine x E-ink Palettes
 
 Exact values are in the generated tables above; the notes below say when to use each palette.

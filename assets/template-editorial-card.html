@@ -19,7 +19,7 @@
          .poster.wide     2100× 900  (21:9  微信主封面)
          .pair-preview                       21:9 + 1:1 配对预览
 
-       Theme switching via <html data-theme="…">:
+       Theme switching via <html data-theme="…"> (including Bibi ochre-red and graphite-green fork presets):
          ink-classic | indigo-porcelain | forest-ink | kraft-paper | dune | midnight-ink
 
        Fill posters where marked <!-- POSTERS_HERE -->.
@@ -596,6 +596,29 @@
 /* 旧变量名别名（迁移期保留） */
 :root{--serif-zh:var(--font-serif-zh);--serif-en:var(--font-display);--sans-zh:var(--font-sans);--mono:var(--font-mono)}
 /* GZ:TOKENS:END */
+
+/* BIBI:FORK-THEMES:START · maintained outside the generated upstream token block */
+[data-theme="bibi-ochre-red"], [data-theme="ochre-red"]{
+  --paper:#f5e9df; --paper-2:#e9d2c4; --ink:#3a211c; --muted:#80635a;
+  --accent:#a44834; --accent-soft:#d9b4a5; --accent-on:#f5e9df;
+  --accent-ink:#94402f; --accent-display:#a44834; --accent-ink-inverse:#e79985;
+  --text-primary:#3a211c; --text-body:#4f3731; --text-secondary:#654d46; --text-helper:#80635a;
+  --line-strong:#99827a; --line:#c5b4ac; --line-subtle:#ddd0c9;
+  --ink-rgb:58,33,28; --paper-rgb:245,233,223; --accent-rgb:164,72,52;
+  --accent-on-rgb:245,233,223; --accent-on-text:#f5e9df; --accent-on-text-rgb:245,233,223;
+  color-scheme:light;
+}
+[data-theme="bibi-graphite-green"], [data-theme="graphite-green"]{
+  --paper:#f5f1e8; --paper-2:#e8dfcf; --ink:#16251b; --muted:#5d665d;
+  --accent:#2e6b4f; --accent-soft:#d4dfd2; --accent-on:#f5f1e8;
+  --accent-ink:#2e6b4f; --accent-display:#2e6b4f; --accent-ink-inverse:#88c6a6;
+  --text-primary:#16251b; --text-body:#39473c; --text-secondary:#4d5a50; --text-helper:#5d665d;
+  --line-strong:#899286; --line:#bcc1b8; --line-subtle:#d7d7ce;
+  --ink-rgb:22,37,27; --paper-rgb:245,241,232; --accent-rgb:46,107,79;
+  --accent-on-rgb:245,241,232; --accent-on-text:#f5f1e8; --accent-on-text-rgb:245,241,232;
+  color-scheme:light;
+}
+/* BIBI:FORK-THEMES:END */
     /* ---------- 3. Reset & sheet ---------- */
     *,*::before,*::after { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
