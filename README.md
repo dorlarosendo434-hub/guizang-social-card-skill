@@ -10,7 +10,7 @@
 
 [English README](./README.en.md)
 
-> 这是笔笔维护的公开派生版，来源为 [op7418/guizang-social-card-skill](https://github.com/op7418/guizang-social-card-skill)。保留上游来源与 AGPL-3.0 许可证，并增加笔笔的公众号正文贴图模式、联名页头/页尾规范，以及赭红、石墨绿两套个人主题。
+> 这是笔笔维护的公开派生版，来源为 [op7418/guizang-social-card-skill](https://github.com/op7418/guizang-social-card-skill)。保留上游来源与 AGPL-3.0 许可证，并增加笔笔的公众号正文贴图模式、联名页头/页尾规范，以及 5 套个人主题。
 
 一个适配 Claude Code / Codex 等 Agent 环境的图文卡片技能,用于从文章、文案、截图、产品笔记、字幕、照片或用户视频生成**小红书 / Rednote 图文组图**、**公众号 3:4 正文贴图**、**Live Photo 动态卡**与**公众号 21:9 + 1:1 封面对**。
 
@@ -65,7 +65,7 @@ npx skills add https://github.com/dorlarosendo434-hub/guizang-social-card-skill 
 - 📐 **3 个画板尺寸**:`.poster.xhs` 1080×1440(小红书 3:4)、`.poster.wide` 2100×900(公众号 21:9)、`.poster.square` 1080×1080(公众号 1:1)
 - 🎬 **Live Photo 动态卡**:支持单视频、二宫格、三宫格、四宫格、三连拼图、长视频低成本诊断;小红书按 `5s`,微信公众号文章内按 `3s`
 - 🧩 **28 个版式骨架**:Editorial 16 个(`M01-M16`,含 Image-Led Cover、Pipeline、Before/After 等)+ Swiss 12 个(`S01-S12`,含 KPI Tower、H-Bar Chart、Matrix + Hero 等)
-- 🎨 **12 套主题预设**:Editorial 6 套 + 笔笔专属 2 套(赭红、石墨绿)+ Swiss 4 套锚点色
+- 🎨 **15 套主题预设**:Editorial 6 套 + 笔笔专属 5 套(赭红、石墨绿、鼠尾草苔绿、淡梨米金、陶土暖赭)+ Swiss 4 套锚点色
 - 📰 **笔笔公众号正文贴图**:`1080×1440 / 3:4`，固定联名页头与页尾，控制信息密度并优先使用真实产品证据
 - 🖼 **图源工作流**:用户图优先;无图时按 Unsplash → Pexels → Flickr CC → Wallhaven → 直接搜索的优先级取图,落本地 + 自动写 `SOURCES.md`
 - 🌫 **WebGL 墨流背景**:杂志风 hero 页可挂动态墨流;低性能或截图时可禁用
@@ -203,7 +203,7 @@ git clone https://github.com/dorlarosendo434-hub/guizang-social-card-skill.git ~
 Skill 本身是结构化工作流,Agent 会按 7 步走:
 
 1. **Intake** — 抓 4 件事:目标平台 / 风格 / 内容素材 / 用户图。无图时一次性给 A/B/C 三选(自己拍图 / AI 生图 / 网络取图),不二次劝导
-2. **Style & Theme** — 选 Editorial、Swiss 或笔笔公众号正文贴图模式,再从 12 套预设里选主题色。不允许随手写 hex,品牌色走受约束生成
+2. **Style & Theme** — 选 Editorial、Swiss 或笔笔公众号正文贴图模式,再从 15 套预设里选主题色。不允许随手写 hex,品牌色走受约束生成
 3. **Layout Selection** — 根据内容结构从 28 个版式骨架里挑、粘、改文案。Editorial 16 个 / Swiss 12 个
 4. **Asset Prep** — 取图(Unsplash / Pexels / Flickr CC / Wallhaven / 直接搜索),落本地 + 写 `SOURCES.md`;问用户要不要标来源
 5. **Compose & Render** — 拷种子模板 → 替换 `<!-- POSTERS_HERE -->` → `node scripts/render.mjs <任务目录>`
@@ -249,12 +249,15 @@ node validate-social-deck.mjs path/to/task-dir
 | 🌙 **沙丘 Dune** | `#1f1a14` / `#f0e6d2` | 艺术、设计、创意、时尚 |
 | ⚫ **午夜墨 Midnight Ink** | `#0e0d0c` / `#ece2cf` / `#d4a04a` | 游戏 key art / 夜景 / 影调封面 / 黑神话 · 艾尔登法环类深色题材 |
 
-### 笔笔专属 Editorial 2 套
+### 笔笔专属 Editorial 5 套
 
 | 主题 | 色调 | 适合场景 |
 |------|------|---------|
 | 🧱 **赭红纸墨 Bibi Ochre Red** | `#3a211c` / `#f5e9df` / `#a44834` | 商单、产品价值、成本、采购判断、案例 |
 | 🌲 **石墨绿 Bibi Graphite Green** | `#16251b` / `#f5f1e8` / `#2e6b4f` | AI 工具、工作流、教程、方法论、理性分析 |
+| 🌿 **鼠尾草苔绿 Bibi Sage Moss** | `#263129` / `#f4f4ed` / `#7f927e` | 成长、健康、长期主义、自然感工作流 |
+| 🌾 **淡梨米金 Bibi Pear Gold** | `#3b3426` / `#fbf6e3` / `#c4a760` | 入门指南、轻教程、清单、效率建议 |
+| 🧱 **陶土暖赭 Bibi Terracotta Ochre** | `#442b25` / `#f4e9e1` / `#a96050` | 商单、品牌故事、产品价值、案例复盘 |
 
 ### Swiss 4 套
 
@@ -291,7 +294,7 @@ guizang-social-card-skill/
 ├── validate-social-deck.mjs              ← Playwright 版式校验脚本
 ├── scripts/                              ← Live Photo 打包 / 抽帧 / 文档测试脚本
 ├── assets/
-│   ├── template-editorial-card.html      ← Editorial 种子(6 通用 + 2 笔笔主题 / 3 画板)
+│   ├── template-editorial-card.html      ← Editorial 种子(6 通用 + 5 笔笔主题 / 3 画板)
 │   ├── template-swiss-card.html          ← Swiss 种子(4 accent / 3 画板)
 │   ├── magazine-bg-webgl.js              ← WebGL 墨流背景
 │   └── screenshot-backgrounds/           ← 9 张截图舞台底(WebP)
@@ -300,7 +303,7 @@ guizang-social-card-skill/
 └── references/
     ├── platform-specs.md                 ← 平台 × 分辨率 × 命名
     ├── style-system.md                   ← 两种风格的硬规则与反模式
-    ├── theme-presets.md                  ← 12 套色票详解
+    ├── theme-presets.md                  ← 15 套色票详解
     ├── bibi-wechat-inline.md             ← 笔笔公众号 3:4 正文贴图规范
     ├── layout-recipes.md                 ← 28 个版式骨架(M01-M16 + S01-S12)
     ├── components.md                     ← 字体 / 卡片 / 间距 / 图标
@@ -353,7 +356,7 @@ guizang-social-card-skill/
 可以。一个 task 目录下的 `index.html` 包含多个 `.poster`,`node scripts/render.mjs` 会逐个截 PNG。一次出小红书 3-9 张组图很常见。
 
 **为什么不允许自定义颜色?**
-和 PPT skill 同样的理由——这个 Skill 的核心价值是稳定产出。自由选色会破坏整体风格,只允许从 12 套预设里挑；其中赭红和石墨绿是笔笔专属的维护主题。
+和 PPT skill 同样的理由——这个 Skill 的核心价值是稳定产出。自由选色会破坏整体风格,只允许从 15 套预设里挑；其中 5 套是笔笔专属的维护主题。
 
 **能用其他模型生图吗?**
 可以。生图本身不在 Skill 范围内,但 SKILL.md Step 4 写清了取图协议:用户图 → AI 生图 → 网络取图。AI 生图能力依赖你当前 Agent 接的模型。

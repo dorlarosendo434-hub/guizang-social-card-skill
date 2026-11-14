@@ -58,14 +58,19 @@ Paste the printed `[data-theme="brand"]{…}` at the end of the page `<style>` a
 
 ## Bibi WeChat Inline Palettes (Fork Presets)
 
-These two maintained palettes belong to the public Bibi fork and intentionally live outside the generated upstream block above. They are inlined after `GZ:TOKENS:END` in `assets/template-editorial-card.html`.
+These five maintained palettes belong to the public Bibi fork and intentionally live outside the generated upstream block above. They are inlined after `GZ:TOKENS:END` in `assets/template-editorial-card.html`.
 
 | Theme | data-theme | paper | ink | accent | Best for |
 |---|---|---:|---:|---:|---|
 | 赭红纸墨 Bibi Ochre Red | `bibi-ochre-red` / `ochre-red` | `#f5e9df` | `#3a211c` | `#a44834` | 商单、产品价值、成本、采购判断、案例 |
 | 石墨绿 Bibi Graphite Green | `bibi-graphite-green` / `graphite-green` | `#f5f1e8` | `#16251b` | `#2e6b4f` | AI 工具、工作流、教程、方法论、理性分析 |
+| 鼠尾草苔绿 Bibi Sage Moss | `bibi-sage-moss` / `sage-moss` | `#f4f4ed` | `#263129` | `#7f927e` | 成长、健康、长期主义、自然感工作流 |
+| 淡梨米金 Bibi Pear Gold | `bibi-pear-gold` / `pear-gold` | `#fbf6e3` | `#3b3426` | `#c4a760` | 入门指南、轻教程、清单、效率建议 |
+| 陶土暖赭 Bibi Terracotta Ochre | `bibi-terracotta-ochre` / `terracotta-ochre` | `#f4e9e1` | `#442b25` | `#a96050` | 商单、品牌故事、产品价值、案例复盘 |
 
-Use the accent for key numbers, decisive conclusions, and structural marks. Explanatory labels such as “适合谁 / 推荐场景 / 重点客群” stay in `--ink` by default. Both themes use Editorial typography; the co-brand header uses a bold sans-serif lockup as defined in `bibi-wechat-inline.md`.
+Use the accent for key numbers, decisive conclusions, and structural marks. Explanatory labels such as “适合谁 / 推荐场景 / 重点客群” stay in `--ink` by default. All Bibi themes use Editorial typography; the co-brand header uses a bold sans-serif lockup as defined in `bibi-wechat-inline.md`.
+
+For the three multi-tone themes, `--accent` is the primary emphasis, `--accent-2` supports evidence or comparison, and `--accent-3` closes the page with an action or small structural marker. Use only the tones that serve the content; do not rainbow-code ordinary paragraphs.
 
 ```css
 [data-theme="bibi-ochre-red"], [data-theme="ochre-red"] {
@@ -81,6 +86,21 @@ Use the accent for key numbers, decisive conclusions, and structural marks. Expl
   --accent-ink:#2e6b4f; --accent-display:#2e6b4f; --accent-ink-inverse:#88c6a6;
   --text-primary:#16251b; --text-body:#39473c; --text-secondary:#4d5a50; --text-helper:#5d665d;
   --line-strong:#899286; --line:#bcc1b8; --line-subtle:#d7d7ce;
+}
+[data-theme="bibi-sage-moss"], [data-theme="sage-moss"] {
+  --paper:#f4f4ed; --paper-2:#dde3d8; --ink:#263129; --muted:#667267;
+  --accent:#7f927e; --accent-2:#aab7a5; --accent-3:#667a61; --accent-soft:#c8d2c3;
+  --accent-on:#f4f4ed; --text-primary:#263129; --text-body:#3e4941;
+}
+[data-theme="bibi-pear-gold"], [data-theme="pear-gold"] {
+  --paper:#fbf6e3; --paper-2:#e8dfc7; --ink:#3b3426; --muted:#7a705a;
+  --accent:#c4a760; --accent-2:#cdc1a2; --accent-3:#b6954a; --accent-soft:#e8dca8;
+  --accent-on:#3b3426; --text-primary:#3b3426; --text-body:#514936;
+}
+[data-theme="bibi-terracotta-ochre"], [data-theme="terracotta-ochre"] {
+  --paper:#f4e9e1; --paper-2:#e4c8b9; --ink:#442b25; --muted:#84675d;
+  --accent:#a96050; --accent-2:#95584d; --accent-3:#b57a45; --accent-soft:#d9afa0;
+  --accent-on:#f4e9e1; --text-primary:#442b25; --text-body:#5a3e37;
 }
 ```
 

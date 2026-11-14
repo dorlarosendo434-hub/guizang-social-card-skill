@@ -21,7 +21,7 @@ Use this skill for:
 - Triple Live Photo collages when the user has three short videos, three results, three viewpoints, or a high-information comparison that should stay inside one image-card unit.
 - Long-video intake for Live Photo: diagnose whether to trim, speed up, split into a triple collage, or ask the user for a specific time range before rendering.
 - WeChat Official Account cover pairs: one `21:9` main cover plus one `1:1` square cover, composed together in the same HTML for visual checking.
-- Bibi WeChat inline card sets: `1080 × 1440` / `3:4` cover plus content pages, using the recurring co-brand header/footer and the `bibi-ochre-red` or `bibi-graphite-green` personal palette.
+- Bibi WeChat inline card sets: `1080 × 1440` / `3:4` cover plus content pages, using the recurring co-brand header/footer and one maintained Bibi personal palette.
 - Screenshot-heavy product posts, article covers, tutorial carousels, outdoor/lifestyle notes, AI/product update explainers.
 - Social images that need Guizang-style Swiss or editorial magazine layouts.
 
@@ -81,7 +81,7 @@ Read these files as needed:
 - `references/image-overlay.md` whenever text sits on top of a photo: photo qualification, localized tint fallback, and face / subject avoidance via multimodal subject mapping.
 - `references/screenshot-treatment.md` when the user supplies an app / web / code / dashboard screenshot — picks `.frame-shot` over `.frame-img`, sets corners/shadow/bg/inset, decides on `.device-browser` or `.device-phone` chrome.
 - `references/co-brand-header.md` whenever a supplied logo is paired with a creator credit, partner name, sponsor, or recurring header lockup — normalize visible bounds first, then apply optical alignment and multi-page consistency checks.
-- `references/bibi-wechat-inline.md` whenever the user asks for 公众号贴图 / 公众号小绿书 / 公众号正文配图 / 笔笔贴图, or asks to continue the recurring co-brand header, footer, ochre-red, or graphite-green treatment.
+- `references/bibi-wechat-inline.md` whenever the user asks for 公众号贴图 / 公众号小绿书 / 公众号正文配图 / 笔笔贴图, or asks to continue the recurring co-brand header, footer, or any maintained Bibi personal palette.
 - `references/map-component.md` when the content has spatial relationships (travel route, store locations, walking tour) — real routes default to Mapbox Static or OSM static tiles; schematic SVG is only for conceptual / illustrative maps. Pins are HTML overlays; never use live JS maps.
 - `references/title-shortener.md` when the task is a WeChat 21:9+1:1 cover pair, or any cross-platform reuse — derives the 1:1 short title from the long one (5-step extraction, 4 patterns, anti-patterns, sizing on `.poster.square`).
 - `references/category-cookbook.md` to route a user-named Rednote category (旅行 / 职场 / 游戏 / 影视 / 彩妆 / 美食 / 穿搭 / 家居 / 健身 / 情感 / 推荐) to applicable recipes and to confirm scope.
@@ -165,7 +165,7 @@ Do not mix the two visual systems inside the same image set unless the user expl
 Then pick one theme:
 
 - Editorial Magazine x E-ink uses one of 6 magazine palettes: Ink Classic, Indigo Porcelain, Forest Ink, Kraft Paper, Dune, or Midnight Ink (the only dark variant; reserved for game key art / night photography / cinematic covers).
-- Bibi WeChat inline cards add two maintained Editorial palettes: `bibi-ochre-red` for commercial/product/cost content and `bibi-graphite-green` for AI tools/workflows/tutorials. These are personal fork presets, not improvised brand hex values.
+- Bibi WeChat inline cards add five maintained Editorial palettes: `bibi-ochre-red`, `bibi-graphite-green`, `bibi-sage-moss`, `bibi-pear-gold`, and `bibi-terracotta-ochre`. These are personal fork presets, not improvised brand hex values. Multi-tone presets expose `--accent`, `--accent-2`, and `--accent-3`; map them to content hierarchy instead of distributing all colors evenly.
 - Swiss International uses one of 4 accent palettes: IKB Blue, Lemon Yellow, Lemon Green, or Safety Orange.
 
 Read `references/theme-presets.md` for exact CSS tokens. Do not invent arbitrary colors unless the user has a strict brand requirement.
@@ -206,7 +206,7 @@ The seed already wires up: font loading, theme tokens, all three poster sizes (`
 Set the palette with `data-theme` on the `<html>` element (all palettes are inlined in the template's `GZ:TOKENS` block — never edit that block or write hex values in posters; see `references/theme-presets.md` for the semantic colour variables):
 
 - Editorial: `<html data-theme="ink-classic | indigo-porcelain | forest-ink | kraft-paper | dune | midnight-ink">`.
-- Bibi Editorial: `<html data-theme="bibi-ochre-red | bibi-graphite-green">` (short aliases `ochre-red` and `graphite-green` are also supported).
+- Bibi Editorial: `<html data-theme="bibi-ochre-red | bibi-graphite-green | bibi-sage-moss | bibi-pear-gold | bibi-terracotta-ochre">` (short aliases without the `bibi-` prefix are also supported).
 - Swiss: `<html data-theme="ikb | lemon | lemon-green | safety-orange">` (the old `data-accent="… | lemon-yellow | …"` still works).
 - The user gave a brand or logo colour: run `node <SKILL_ROOT>/scripts/gz-theme.mjs brand "#4D6BFE" --family magazine` (or `--family swiss`), paste the printed `[data-theme="brand"]{…}` at the end of the page `<style>`, and set `data-theme="brand"`. Never use the raw colour; if the script refuses, fall back to a preset.
 - Chinese text is never italic (Chinese fonts have no italic glyphs; the browser slants them artificially). Italic belongs to Latin text set in Playfair Display (`.h-sub`, `em` inside an English line).

@@ -10,7 +10,7 @@
 
 [中文 README](./README.md)
 
-> This is Bibi's public fork of [op7418/guizang-social-card-skill](https://github.com/op7418/guizang-social-card-skill), preserving upstream attribution and the AGPL-3.0 license. It adds Bibi's 3:4 WeChat inline-card mode, recurring co-brand header/footer, and ochre-red plus graphite-green personal themes.
+> This is Bibi's public fork of [op7418/guizang-social-card-skill](https://github.com/op7418/guizang-social-card-skill), preserving upstream attribution and the AGPL-3.0 license. It adds Bibi's 3:4 WeChat inline-card mode, recurring co-brand header/footer, and five maintained personal themes.
 
 An agent skill for Claude Code, Codex, and similar coding-agent environments. It generates **Xiaohongshu / Rednote carousel images**, **3:4 WeChat inline cards**, **Live Photo motion cards**, and **WeChat 21:9 + 1:1 cover pairs** from articles, copy, screenshots, product notes, subtitles, photos, or user-supplied videos.
 
@@ -64,7 +64,7 @@ Turn these three game clips into a triple Live Photo collage with Swiss-style gu
 - 📐 **3 canvas sizes**: `.poster.xhs` 1080×1440 (Xiaohongshu 3:4), `.poster.wide` 2100×900 (WeChat 21:9), `.poster.square` 1080×1080 (WeChat 1:1)
 - 🎬 **Live Photo motion cards**: single video, two-grid, three-grid, four-grid, triple collage, and low-cost long-video diagnosis; `5s` for Xiaohongshu, `3s` for WeChat Official Account articles
 - 🧩 **28 layout skeletons**: 16 Editorial (`M01-M16`, including Image-Led Cover, Pipeline, Before/After) + 12 Swiss (`S01-S12`, including KPI Tower, H-Bar Chart, Matrix + Hero)
-- 🎨 **12 theme presets**: 6 core Editorial + 2 Bibi personal themes (Ochre Red, Graphite Green) + 4 Swiss anchor colors
+- 🎨 **15 theme presets**: 6 core Editorial + 5 Bibi personal themes + 4 Swiss anchor colors
 - 🖼 **Image sourcing workflow**: user images first; otherwise waterfall through Unsplash → Pexels → Flickr CC → Wallhaven → direct search, downloaded locally with auto-generated `SOURCES.md`
 - 🌫 **WebGL ink-flow background**: editorial hero pages can ship a live ink animation; can be disabled for low-power devices or screenshot mode
 - 🪧 **Text-on-image + subject safety**: full-bleed images require quiet-zone and subject mapping first; add only localized tint when needed, not a default full-canvas mask
@@ -200,7 +200,7 @@ Once installed, Claude Code auto-detects the skill. Trigger phrases:
 The skill is a structured workflow. The agent walks through 7 steps:
 
 1. **Intake** — capture 4 things: target platform / style / source content / user images. When no images are available, present A/B/C once (shoot your own / AI generate / source online); don't re-pitch
-2. **Style & Theme** — pick Editorial, Swiss, or the Bibi WeChat inline mode, then pick one of 12 theme presets. No hand-written hex values; brand colors go through constrained generation
+2. **Style & Theme** — pick Editorial, Swiss, or the Bibi WeChat inline mode, then pick one of 15 theme presets. No hand-written hex values; brand colors go through constrained generation
 3. **Layout Selection** — pick / paste / adapt copy from the 28 layout skeletons. 16 Editorial / 12 Swiss
 4. **Asset Prep** — source images (Unsplash / Pexels / Flickr CC / Wallhaven / direct search), download locally + write `SOURCES.md`; ask whether to credit sources
 5. **Compose & Render** — copy seed template → replace `<!-- POSTERS_HERE -->` → `node scripts/render.mjs <task-dir>`
@@ -246,12 +246,15 @@ Pick from [`references/theme-presets.md`](./references/theme-presets.md). **Don'
 | 🌙 **Dune** | `#1f1a14` / `#f0e6d2` | Art, design, creative, fashion |
 | ⚫ **Midnight Ink** | `#0e0d0c` / `#ece2cf` / `#d4a04a` | Game key art / night scenes / cinematic covers / Black Myth · Elden Ring-style dark themes |
 
-### Bibi Editorial (2)
+### Bibi Editorial (5)
 
 | Theme | Tones | Best for |
 |-------|-------|----------|
 | 🧱 **Bibi Ochre Red** | `#3a211c` / `#f5e9df` / `#a44834` | Commercial briefs, product value, cost, purchasing decisions, cases |
 | 🌲 **Bibi Graphite Green** | `#16251b` / `#f5f1e8` / `#2e6b4f` | AI tools, workflows, tutorials, methods, analytical content |
+| 🌿 **Bibi Sage Moss** | `#263129` / `#f4f4ed` / `#7f927e` | Growth, health, long-term thinking, nature-led workflows |
+| 🌾 **Bibi Pear Gold** | `#3b3426` / `#fbf6e3` / `#c4a760` | Beginner guides, light tutorials, checklists, efficiency tips |
+| 🧱 **Bibi Terracotta Ochre** | `#442b25` / `#f4e9e1` / `#a96050` | Commercial briefs, brand stories, product value, case reviews |
 
 ### Swiss (4)
 
@@ -289,7 +292,7 @@ guizang-social-card-skill/
 ├── validate-social-deck.mjs              ← Playwright layout validator
 ├── scripts/                              ← Live Photo packaging / contact sheet / doc-test scripts
 ├── assets/
-│   ├── template-editorial-card.html      ← Editorial seed (6 core + 2 Bibi themes / 3 canvases)
+│   ├── template-editorial-card.html      ← Editorial seed (6 core + 5 Bibi themes / 3 canvases)
 │   ├── template-swiss-card.html          ← Swiss seed (4 accents / 3 canvases)
 │   ├── magazine-bg-webgl.js              ← WebGL ink-flow background
 │   └── screenshot-backgrounds/           ← 9 screenshot stage backgrounds (WebP)
@@ -298,7 +301,7 @@ guizang-social-card-skill/
 └── references/
     ├── platform-specs.md                 ← Platform × resolution × naming
     ├── style-system.md                   ← Hard rules and anti-patterns for both styles
-    ├── theme-presets.md                  ← All 12 palettes in detail
+    ├── theme-presets.md                  ← All 15 palettes in detail
     ├── bibi-wechat-inline.md             ← Bibi 3:4 WeChat inline-card rules
     ├── layout-recipes.md                 ← 28 layout skeletons (M01-M16 + S01-S12)
     ├── components.md                     ← Type / cards / spacing / icons
@@ -351,7 +354,7 @@ guizang-social-card-skill/
 Yes. A task directory's `index.html` can hold multiple `.poster` sections; `node scripts/render.mjs` screenshots each one. A 3-9 card Xiaohongshu set is the common case.
 
 **Why are custom colors disallowed?**
-Same reason as the PPT skill — the skill's core value is stable output. Free color picking breaks visual cohesion. Pick from the 12 maintained presets only.
+Same reason as the PPT skill — the skill's core value is stable output. Free color picking breaks visual cohesion. Pick from the 15 maintained presets only.
 
 **Can I use other models for image generation?**
 Yes. Image generation itself is out of scope. SKILL.md Step 4 spells out the sourcing protocol: user images → AI-generated → web sources. AI generation depends on whichever model your agent connects to.
