@@ -1,6 +1,6 @@
 ---
 name: guizang-social-card-skill
-description: Generate Guizang-style social card image sets, Bibi-branded WeChat inline cards, Live Photo motion cards, material-first Live Photo puzzle layouts, triple Live Photo collages, long-video-to-Live-Photo treatments, and WeChat official account cover pairs from articles, scripts, screenshots, product notes, subtitles, photos, or user-supplied videos. Use when the user asks for 小红书图文, Rednote/Xiaohongshu images, 公众号贴图, 公众号小绿书, 公众号正文配图, 笔笔贴图, social cards, carousel images, 3:4 covers, Live Photo, 实况照片, 单视频实况拼图, 二宫格实况拼图, 三连实况拼图, 四宫格实况拼图, 微信公众号封面, WeChat 21:9 + 1:1 covers, Swiss Style, or magazine-style social images.
+description: Make Guizang-style social cards, Bibi WeChat body cards, material-first Live Photo puzzle layouts, or paired WeChat covers. Use for 小红书图文, 公众号贴图, 公众号小绿书, 笔笔贴图, 公众号正文信息卡, Swiss Style or editorial carousels, Live Photo/实况照片, multi-well motion collages, or 微信公众号封面 (21:9 + 1:1). For general 公众号正文配图, use this only when the user wants typeset information cards. Follow an explicitly requested illustration or article-layout workflow for those deliverables.
 ---
 
 # Guizang Social Card Skill
@@ -21,7 +21,7 @@ Use this skill for:
 - Triple Live Photo collages when the user has three short videos, three results, three viewpoints, or a high-information comparison that should stay inside one image-card unit.
 - Long-video intake for Live Photo: diagnose whether to trim, speed up, split into a triple collage, or ask the user for a specific time range before rendering.
 - WeChat Official Account cover pairs: one `21:9` main cover plus one `1:1` square cover, composed together in the same HTML for visual checking.
-- Bibi WeChat inline card sets: `1080 × 1440` / `3:4` cover plus content pages, using the recurring co-brand header/footer and one maintained Bibi personal palette.
+- Bibi WeChat inline cards: `1080 × 1440` / `3:4` body cards, single or grouped as requested, using consistent header/footer and one maintained Bibi palette or an explicitly requested brand theme.
 - Screenshot-heavy product posts, article covers, tutorial carousels, outdoor/lifestyle notes, AI/product update explainers.
 - Social images that need Guizang-style Swiss or editorial magazine layouts.
 
@@ -81,7 +81,7 @@ Read these files as needed:
 - `references/image-overlay.md` whenever text sits on top of a photo: photo qualification, localized tint fallback, and face / subject avoidance via multimodal subject mapping.
 - `references/screenshot-treatment.md` when the user supplies an app / web / code / dashboard screenshot — picks `.frame-shot` over `.frame-img`, sets corners/shadow/bg/inset, decides on `.device-browser` or `.device-phone` chrome.
 - `references/co-brand-header.md` whenever a supplied logo is paired with a creator credit, partner name, sponsor, or recurring header lockup — normalize visible bounds first, then apply optical alignment and multi-page consistency checks.
-- `references/bibi-wechat-inline.md` whenever the user asks for 公众号贴图 / 公众号小绿书 / 公众号正文配图 / 笔笔贴图, or asks to continue the recurring co-brand header, footer, or any maintained Bibi personal palette.
+- `references/bibi-wechat-inline.md` for 公众号贴图 / 公众号小绿书 / 笔笔贴图 or body illustrations explicitly requested as typeset cards, and when reusing Bibi's header, footer, or palettes.
 - `references/map-component.md` when the content has spatial relationships (travel route, store locations, walking tour) — real routes default to Mapbox Static or OSM static tiles; schematic SVG is only for conceptual / illustrative maps. Pins are HTML overlays; never use live JS maps.
 - `references/title-shortener.md` when the task is a WeChat 21:9+1:1 cover pair, or any cross-platform reuse — derives the 1:1 short title from the long one (5-step extraction, 4 patterns, anti-patterns, sizing on `.poster.square`).
 - `references/category-cookbook.md` to route a user-named Rednote category (旅行 / 职场 / 游戏 / 影视 / 彩妆 / 美食 / 穿搭 / 家居 / 健身 / 情感 / 推荐) to applicable recipes and to confirm scope.
@@ -93,6 +93,7 @@ Read these files as needed:
 
 Gather only the missing information that changes the output:
 
+- For text-led Bibi WeChat body cards, the article or notes can supply the evidence. Skip the image-source question below unless the requested layout or claim needs a specific image.
 - Target platforms and ratios.
 - Source text, subtitles, article, or title.
 - **Rednote category** — if the user names one of the 11 common types (旅行 / 职场 / 游戏 / 影视 / 美食 / 彩妆 / 穿搭 / 家居 / 健身 / 情感 / 推荐), route via `references/category-cookbook.md` to find the right recipes and to confirm the request is inside the capability circle (see "Rednote Category Capability" above). If a request lands in the outside-scope bucket, surface that to the user **before** designing, do not silently retrofit.
@@ -135,12 +136,14 @@ For WeChat cover pairs:
 
 For Bibi WeChat inline cards:
 
-- Produce a `3:4` cover plus 4-8 content pages unless the source needs fewer pages.
-- Use one clear idea per page with a kicker, title, short explanation, evidence image/screenshot, and bottom takeaway when applicable.
+- Follow the requested count and roles. For an unspecified multi-card set, consider a `3:4` opener and 4–8 content pages; for a single body card, design it to be inserted at its intended paragraph.
+- Use one clear idea per page. Support it with the source text, verified data, a real screenshot, or a clearly labelled diagram as appropriate. Request a missing visual only if it is necessary to support the claim or fulfil the brief.
 - Keep the recurring co-brand header and page footer optically aligned across the set.
 - Read `references/bibi-wechat-inline.md` before planning or rendering.
 
 ### 3. Choose Style Mode
+
+For Bibi WeChat inline cards, use Editorial and the [Bibi palette rules](references/bibi-wechat-inline.md#笔笔专属主题). Follow a different visual direction only when the user explicitly asks for it.
 
 Pick one mode per package. **The two systems are not bound to specific content types** — what changes is the visual stance, not which topic you can talk about. A workplace essay can be Editorial; a travel ledger can be Swiss. Pick by the feeling you want, not by category lookup.
 
@@ -221,7 +224,7 @@ Default implementation pattern:
 - Put source images in `assets/`.
 - For recurring branded or co-branded headers, preserve the original logo, create a tightly cropped derivative when the source canvas has accidental padding, and reuse one lockup component across the full set. Inspect a 100% header crop before full-deck rendering; see `references/co-brand-header.md`.
 - Start from the seed template copied in Step 4.5, not a blank file. Prefer changing only the `<!-- POSTERS_HERE -->` region page-to-page. If a task needs custom layout CSS, add one clearly named task-scoped block in the copied file and keep semantic defaults reset (`figure { margin:0; }`, no browser-default spacing surprises).
-- Install dependencies once in the skill root: `npm install` (Playwright for rendering and validation, subset-font for font embedding).
+- Install dependencies once in the skill root with `npm install`. If Playwright's browser is missing, run `npx playwright install chromium` before rendering.
 - Render with `node <SKILL_ROOT>/scripts/render.mjs <task-dir>`. It embeds the fonts the page actually uses (offline, repeatable), waits for the frozen background and icons, writes `output/<poster-id>.png` plus the pair preview, and fails if an image is not its board size. User-registered local fonts (`node <SKILL_ROOT>/scripts/gz-fonts.mjs add …`) are embedded too and never leave the machine.
 - Inspect the rendered PNGs.
 - Keep `node validate-social-deck.mjs <task-dir>` available for auto-check passes. It checks overflow (R1), footer collision (R2), Swiss bold display (R3), minimum font size (R4), 4-band density (R5), `.h-xl` line caps (R6), browser-default figure margin drift (R7), visual bounds / bottom whitespace (R8), and title-to-content gaps (R9). Exit code 1 on any FAIL — fix before final delivery when auto-check is requested. WARN is advisory but read it.
@@ -309,6 +312,8 @@ If an image is only one element among many in a composite (e.g. one of nine phot
 
 ### 7. Deliver
 
+**Bibi WeChat inline cards.** Run `node <SKILL_ROOT>/validate-social-deck.mjs <task-dir> --bibi-inline`, then render and inspect the exact output files. Check the PNG count and IDs against the requested plan, confirm each file is 1080×1440, and inspect the cards at phone reading width before delivery. Fix FAILs and any visual issues; assess remaining WARNs against the actual layout. This mode includes validation in the normal delivery flow.
+
 **Show user first, validate on request.** Auto-running the validator after every render takes too long and delays the user from seeing results. Default flow:
 
 1. After rendering completes, immediately show the user the rendered images inline (absolute paths) with a one-sentence summary of what was built.
@@ -316,7 +321,7 @@ If an image is only one element among many in a composite (e.g. one of nine phot
 3. If the user says "我自己看" / "先给我" / "no need" — stop here, let them inspect, and respond to whatever they raise.
 4. If the user says "你查吧" / "auto-check" / "yes" — only then run `node validate-social-deck.mjs <task-dir>`, fix any FAIL, and re-render before final delivery. Mention density/cap WARNs.
 
-Never silently run the validator before showing the user — it costs minutes per pass and the user often spots issues faster.
+The review-first flow above covers the other formats unless the user asks for validation before delivery.
 
 Final response (after the user has reviewed or asked for auto-check) should include:
 

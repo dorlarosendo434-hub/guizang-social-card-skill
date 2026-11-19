@@ -62,7 +62,7 @@ This is a static body-card mode, not the `21:9 + 1:1` cover pair and not automat
 
 - Canvas: `1080 x 1440`, ratio `3:4`.
 - Export: PNG.
-- Typical set: 1 cover + 4-8 content pages; use up to 9 only when the source genuinely needs it.
+- Follow the requested page count. An unspecified multi-card series can use 1 opener and 4–8 content pages; a single body insert needs just one card.
 - Safe area: 72-96px on the sides, 72-112px at the top, and 80-120px at the bottom.
 - Naming: `output/wechat-inline-01-cover.png`, then `output/wechat-inline-02-<topic>.png`.
 - Bibi-branded requests must also read `bibi-wechat-inline.md` for the recurring header/footer, density rules, and personal palettes.

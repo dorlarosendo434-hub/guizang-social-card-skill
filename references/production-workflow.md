@@ -27,9 +27,9 @@ Build one HTML file containing all frames:
 <main class="sheet">
   <section class="poster xhs" id="xhs-01">...</section>
   <section class="poster xhs" id="xhs-02">...</section>
-  <section class="cover wechat wide" id="wechat-21x9">...</section>
-  <section class="cover wechat square" id="wechat-1x1">...</section>
-  <section class="wechat-pair-preview" id="wechat-pair-preview">
+  <section class="poster cover wechat wide" id="wechat-21x9">...</section>
+  <section class="poster cover wechat square" id="wechat-1x1">...</section>
+  <section class="pair-preview wechat-pair-preview" id="wechat-pair-preview">
     <div class="preview-wide">...</div>
     <div class="preview-square">...</div>
   </section>

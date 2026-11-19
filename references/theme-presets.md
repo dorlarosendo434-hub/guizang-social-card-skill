@@ -70,12 +70,13 @@ These five maintained palettes belong to the public Bibi fork and intentionally 
 
 Use the accent for key numbers, decisive conclusions, and structural marks. Explanatory labels such as “适合谁 / 推荐场景 / 重点客群” stay in `--ink` by default. All Bibi themes use Editorial typography; the co-brand header uses a bold sans-serif lockup as defined in `bibi-wechat-inline.md`.
 
-For all five themes, `--accent` is the primary emphasis, `--accent-2` supports evidence or comparison, and `--accent-3` closes the page with an action or small structural marker. Use only the tones that serve the content; do not rainbow-code ordinary paragraphs.
+For all five themes, `--accent` is the primary emphasis, `--accent-2` supports evidence or comparison, and `--accent-3` closes the page with an action or small structural marker. Use `--accent-ink` for small accent text on either paper surface. For text on the three fills, pair them with `--accent-on`, `--accent-2-on`, and `--accent-3-on` respectively. Use only the tones that serve the content.
 
 ```css
 [data-theme="bibi-ochre-red"], [data-theme="ochre-red"] {
   --paper:#f5e9df; --paper-2:#e9d2c4; --ink:#3a211c; --muted:#80635a;
   --accent:#a44834; --accent-2:#d9b4a5; --accent-3:#7f3f32; --accent-soft:#d9b4a5; --accent-on:#f5e9df;
+  --accent-2-on:var(--ink); --accent-3-on:var(--paper);
   --accent-ink:#94402f; --accent-display:#a44834; --accent-ink-inverse:#e79985;
   --text-primary:#3a211c; --text-body:#4f3731; --text-secondary:#654d46; --text-helper:#80635a;
   --line-strong:#99827a; --line:#c5b4ac; --line-subtle:#ddd0c9;
@@ -83,6 +84,7 @@ For all five themes, `--accent` is the primary emphasis, `--accent-2` supports e
 [data-theme="bibi-graphite-green"], [data-theme="graphite-green"] {
   --paper:#f5f1e8; --paper-2:#e8dfcf; --ink:#16251b; --muted:#5d665d;
   --accent:#2e6b4f; --accent-2:#a9b7a7; --accent-3:#1f513a; --accent-soft:#d4dfd2; --accent-on:#f5f1e8;
+  --accent-2-on:var(--ink); --accent-3-on:var(--paper);
   --accent-ink:#2e6b4f; --accent-display:#2e6b4f; --accent-ink-inverse:#88c6a6;
   --text-primary:#16251b; --text-body:#39473c; --text-secondary:#4d5a50; --text-helper:#5d665d;
   --line-strong:#899286; --line:#bcc1b8; --line-subtle:#d7d7ce;
@@ -90,17 +92,20 @@ For all five themes, `--accent` is the primary emphasis, `--accent-2` supports e
 [data-theme="bibi-sage-moss"], [data-theme="sage-moss"] {
   --paper:#f4f4ed; --paper-2:#dde3d8; --ink:#263129; --muted:#667267;
   --accent:#7f927e; --accent-2:#aab7a5; --accent-3:#667a61; --accent-soft:#c8d2c3;
-  --accent-on:#f4f4ed; --text-primary:#263129; --text-body:#3e4941;
+  --accent-2-on:var(--ink); --accent-3-on:#ffffff;
+  --accent-on:#1b261e; --accent-ink:#526652; --text-primary:#263129; --text-body:#3e4941;
 }
 [data-theme="bibi-pear-gold"], [data-theme="pear-gold"] {
   --paper:#fbf6e3; --paper-2:#e8dfc7; --ink:#3b3426; --muted:#7a705a;
   --accent:#c4a760; --accent-2:#cdc1a2; --accent-3:#b6954a; --accent-soft:#e8dca8;
-  --accent-on:#3b3426; --text-primary:#3b3426; --text-body:#514936;
+  --accent-2-on:var(--ink); --accent-3-on:#332c20;
+  --accent-on:#3b3426; --accent-ink:#735c24; --text-primary:#3b3426; --text-body:#514936;
 }
 [data-theme="bibi-terracotta-ochre"], [data-theme="terracotta-ochre"] {
   --paper:#f4e9e1; --paper-2:#e4c8b9; --ink:#442b25; --muted:#84675d;
   --accent:#a96050; --accent-2:#95584d; --accent-3:#b57a45; --accent-soft:#d9afa0;
-  --accent-on:#f4e9e1; --text-primary:#442b25; --text-body:#5a3e37;
+  --accent-2-on:var(--paper); --accent-3-on:#221310;
+  --accent-on:#fffaf6; --accent-ink:#834336; --text-primary:#442b25; --text-body:#5a3e37;
 }
 ```
 

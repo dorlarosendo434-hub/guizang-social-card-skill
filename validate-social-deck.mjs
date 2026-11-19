@@ -2,7 +2,7 @@
 /*
  * validate-social-deck.mjs
  *
- *   node validate-social-deck.mjs <task-dir|index.html>
+ *   node validate-social-deck.mjs <task-dir|index.html> [--bibi-inline]
  *
  * Checks each <section class="poster …"> in the target HTML against the rules
  * codified in SKILL.md / qa-checklist.md / components.md. Exits 1 if any FAIL.
@@ -17,21 +17,23 @@
  *   R7  figure margin drift    browser-default <figure> margin offsets media alignment
  *   R8  visual bounds          measured top/bottom blank space and visual overflow
  *   R9  title gap              display title touches the next content block
+ *   R10 Bibi card export       named 1080×1440 artboards with decodable images
  */
 import { chromium } from "playwright";
-import { fileURLToPath } from "node:url";
+import { pathToFileURL } from "node:url";
 import path from "node:path";
 import fs from "node:fs";
 
 const args = process.argv.slice(2);
 let target = null;
 let styleOverride = null;
+const bibiInline = args.includes("--bibi-inline");
 for (const a of args) {
   if (a.startsWith("--style=")) styleOverride = a.slice(8);
-  else if (!target) target = a;
+  else if (!target && a !== "--bibi-inline") target = a;
 }
 if (!target) {
-  console.error("usage: node validate-social-deck.mjs <task-dir|index.html> [--style=swiss|editorial]");
+  console.error("usage: node validate-social-deck.mjs <task-dir|index.html> [--style=swiss|editorial] [--bibi-inline]");
   process.exit(2);
 }
 const abs = path.resolve(target);
@@ -44,7 +46,7 @@ if (!fs.existsSync(htmlPath)) {
   process.exit(2);
 }
 
-const url = "file://" + htmlPath;
+const url = pathToFileURL(htmlPath).href;
 const browser = await chromium.launch({
   args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
 });
@@ -75,7 +77,13 @@ const style = styleOverride || await page.evaluate(() => {
 
 // 配对预览里的封面是缩放过的副本，不单独检查（原件已经检查过）
 const sections = await page.$$("section.poster:not(.pair-preview section.poster)");
+if (!sections.length) {
+  console.error("[FAIL] No exportable <section class=\"poster\"> boards found.");
+  await browser.close();
+  process.exit(1);
+}
 const report = [];
+const bibiIds = new Set();
 
 // 字号下限：和 guizang-design tokens/media.json 的 card.floors 一致（正文 24、小字 20、图注 / 标签 / meta 18）。
 // 低于下限判 FAIL；导语没有 token 下限，低于 26 只给 WARN。
@@ -128,6 +136,39 @@ for (const s of sections) {
   });
   const fails = [];
   const warns = [];
+
+  if (bibiInline) {
+    const { xhs, width, height, brokenImages } = await s.evaluate(async el => {
+      const { width, height } = el.getBoundingClientRect();
+      const images = [...el.querySelectorAll("img")];
+      const results = await Promise.all(images.map(async image => {
+        image.loading = "eager";
+        try {
+          await image.decode();
+          return null;
+        } catch {
+          return image.getAttribute("src") || image.getAttribute("srcset") || "(missing image source)";
+        }
+      }));
+      return {
+        xhs: el.classList.contains("xhs"),
+        width: Math.round(width),
+        height: Math.round(height),
+        brokenImages: results.filter(Boolean),
+      };
+    });
+    const id = meta.id.toLowerCase();
+    if (!/^wechat-inline-[\p{L}\p{N}_-]+$/u.test(meta.id) || bibiIds.has(id)) {
+      fails.push({ rule: "R10", msg: `missing, invalid, or duplicate PNG identifier: ${meta.id}`, fix: "give each board a unique wechat-inline-* id" });
+    }
+    bibiIds.add(id);
+    if (!xhs || width !== 1080 || height !== 1440) {
+      fails.push({ rule: "R10", msg: `board is ${width}×${height}; expected .poster.xhs at 1080×1440`, fix: "use the Editorial seed's .poster.xhs artboard and remove size overrides" });
+    }
+    if (brokenImages.length) {
+      fails.push({ rule: "R10", msg: `image(s) could not be decoded: ${brokenImages.join(", ")}`, fix: "restore the intended images or remove missing placeholders before rendering" });
+    }
+  }
 
   // R1 overflow
   const overflow = meta.scrollH - meta.clientH;
@@ -544,7 +585,7 @@ for (const { meta, fails, warns } of report) {
 }
 
 lines.push("");
-lines.push(`Legend: R1 overflow · R2 footer collision · R3 swiss bold display · R4 min font · R5 4-band density · R6 h-xl cap · R7 figure margin drift · R8 visual bounds · R9 title gap`);
+lines.push(`Legend: R1 overflow · R2 footer collision · R3 swiss bold display · R4 min font · R5 4-band density · R6 h-xl cap · R7 figure margin drift · R8 visual bounds · R9 title gap${bibiInline ? " · R10 Bibi card export" : ""}`);
 lines.push(`Exit code 1 only on FAIL. Warnings are advisory.`);
 
 console.log(lines.join("\n"));
